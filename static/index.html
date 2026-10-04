@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="JobFlow is a personal job-application tracker." />
+    <title>JobFlow — Application Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar"><a class="logo" href="/">Job<span>Flow</span></a><div class="topbar-right"><span class="availability"><i></i> Career workspace</span><button class="primary-button" id="new-application">+ Add application</button></div></header>
+      <section class="hero"><div><p class="eyebrow">Your job search, organised</p><h1>Keep every opportunity moving.</h1><p class="hero-copy">Track applications, prepare for interviews, and keep the next step clear—all in one focused workspace.</p></div><div class="progress-ring"><span id="total-count">0</span><small>total roles</small></div></section>
+      <section class="stattistics" aria-label="Application statistics"><article><p>Applied</p><strong id="applied-count">0</strong><span>roles sent</span></article><article><p>Interviews</p><strong id="interview-count">0</strong><span>in progress</span></article><article><p>Offers</p><strong id="offer-count">0</strong><span>great news</span></article><article><p>Saved</p><strong id="saved-count">0</strong><span>to revisit</span></article></section>
+      <section class="workspace"><div class="workspace-heading"><div><p class="eyebrow">Opportunity board</p><h2>Applications</h2></div><div class="controls"><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Search roles or companies" /></label><select id="status-filter" aria-label="Filter by status"><option value="">All statuses</option><option>Saved</option><option>Applied</option><option>Interview</option><option>Offer</option><option>Rejected</option></select></div></div><div class="table-wrap"><table><thead><tr><th>Company</th><th>Role</th><th>Location</th><th>Status</th><th>Applied</th><th></th></tr></thead><tbody id="applications"></tbody></table><div id="empty-state" class="empty-state" hidden><p>No applications found.</p><button class="text-button" id="empty-add">Add your first application →</button></div></div></section>
+    </main>
+    <dialog id="application-dialog"><form id="application-form" method="dialog"><div class="modal-header"><div><p class="eyebrow" id="form-kicker">New opportunity</p><h2 id="form-title">Add application</h2></div><button class="close-button" type="button" id="close-dialog" aria-label="Close">×</button></div><input type="hidden" id="application-id" /><div class="form-grid"><label>Company<input id="company" required placeholder="e.g. BrightPath" /></label><label>Role<input id="role" required placeholder="e.g. Junior Web Developer" /></label><label>Location<input id="location" placeholder="Remote or city" /></label><label>Status<select id="status"><option>Saved</option><option>Applied</option><option>Interview</option><option>Offer</option><option>Rejected</option></select></label><label>Date applied<input id="date-applied" type="date" /></label><label class="full">Notes<textarea id="notes" rows="4" placeholder="Next step, contact name, interview preparation…"></textarea></label></div><div class="modal-actions"><button class="delete-button" type="button" id="delete-application" hidden>Delete</button><span></span><button class="secondary-button" type="button" id="cancel-dialog">Cancel</button><button class="primary-button" id="save-application" type="submit">Save application</button></div></form></dialog>
+    <template id="application-row"><tr><td><button class="company-button"></button><p class="row-notes"></p></td><td class="role-cell"></td><td class="location-cell"></td><td><span class="status-pill"></span></td><td class="date-cell"></td><td><button class="more-button" aria-label="Edit application">•••</button></td></tr></template>
+    <script src="app.js"></script>
+  </body>
+</html>
